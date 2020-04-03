@@ -1,0 +1,21 @@
+---
+# tasks file for tomcatsetup
+
+- name: check if tomcat is installed
+  package: 
+    name: tomcat
+    update_cache: yes
+    state: latest
+
+- name: check if tomcat is running
+  service: 
+    name: tomcat
+    state: started
+
+- name: Copy static webpage
+  copy:
+    src: /vagrant/webpage
+    dest: /var/lib/tomcat/webapps/
+    owner: tomcat
+    group: tomcat
+    mode: "440"

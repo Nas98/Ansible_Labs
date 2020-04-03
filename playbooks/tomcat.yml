@@ -1,0 +1,15 @@
+
+- name: Configure the Web Server
+  hosts: web
+  become: true
+  roles: 
+   - role: tomcatsetup
+  
+
+
+- name: create a db server
+  hosts: db
+  become: true
+  roles: 
+   - role: mysqlsetup
+
